@@ -1,0 +1,13 @@
+@font-face {
+    font-family: homeFontStyle;
+    src: url("./雅風體W3.TTC");
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: articleFontStyle;
+    src: url("./采風體W3.ttc");
+    font-weight: normal;
+    font-style: normal;
+}
+
