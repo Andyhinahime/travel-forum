@@ -1,5 +1,6 @@
 <template>
     <div>
+        <h1 style="font-family: homeFontStyle;line-height: 30px;font-size: 30px" >註冊會員</h1>
         <el-form :rules="rules" ref="registerUser" :model="registerUser" class="registerUser" label-width="130px">
             <el-form-item class="registerUser" label="姓名" prop="name">
                 <el-input  v-model="registerUser.name"></el-input>
