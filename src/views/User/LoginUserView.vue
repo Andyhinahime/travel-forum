@@ -1,6 +1,5 @@
 <template>
     <div>
-
         <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
             <div style="margin: 130px 190px 150px;">
                 <h1 class="loginFontStyle" style="margin-top: 0;line-height: 50px">用戶登入</h1>
