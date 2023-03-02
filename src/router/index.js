@@ -15,9 +15,17 @@ const routes = [
             {
                 path: 'user/login',
                 name: 'login',
-                component: () => import('../views/User/LoginView'),
+                component: () => import('../views/User/LoginUserView'),
                 meta: {
                     title: '登入 - 旅討論區'
+                }
+            },
+            {
+              path: 'user/register',
+              name: 'register'  ,
+                component:() =>import('../views/User/RegisterUserView'),
+                meta: {
+                  title: '註冊 - 旅討論區'
                 }
             },
             {

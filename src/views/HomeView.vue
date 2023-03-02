@@ -1,7 +1,7 @@
 <template>
     <div class="webLayout" style="width: 1300px;margin: 0 auto">
         <div style="width: 100%;height: 25px">
-            <router-link style="font-family: homeFontStyle;margin-left: 1200px" to="">註冊</router-link>
+            <router-link style="font-family: homeFontStyle;margin-left: 1200px" to="/home/user/register">註冊</router-link>
             <el-divider direction="vertical"></el-divider>
             <router-link style="font-family: homeFontStyle;margin-left: 0px" to="/home/user/login">登入</router-link>
         </div>
