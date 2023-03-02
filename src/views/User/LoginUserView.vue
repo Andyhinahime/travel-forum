@@ -6,19 +6,21 @@
                 <h1 class="loginFontStyle" style="margin-top: 0;line-height: 50px">用戶登入</h1>
                 <el-form-item label="帳號" prop="username" class="loginStyle">
 
-                    <el-input  style="float: left" placeholder="請輸入帳號" v-model="ruleForm.username"></el-input>
+                    <el-input style="float: left" placeholder="請輸入帳號" v-model="ruleForm.username"></el-input>
                 </el-form-item>
                 <el-form-item label="密碼" prop="password" class="loginStyle">
                     <el-input placeholder="請輸入密碼" v-model="ruleForm.password" show-password></el-input>
                 </el-form-item>
 
-                <el-form-item style="float: left">
-                    <span style="font-family: homeFontStyle;font-size: 18px">沒有帳號?  <a href="" style="font-family: homeFontStyle;font-size: 22px">註冊</a></span>
+                <el-form-item>
+                    <el-button style="margin-right: 200px" round @click="login">登入</el-button>
                 </el-form-item>
 
-                <el-form-item>
-                    <el-button style="margin-right: 310px" round @click="login">登入</el-button>
-                </el-form-item>
+                <span style="
+                position: relative;right: 180px;bottom: 122px;
+                font-family: homeFontStyle;font-size: 18px">沒有帳號?
+                    <router-link style="font-family: homeFontStyle;font-size: 22px" to="/home/user/register">註冊</router-link>
+                </span>
             </div>
         </el-form>
     </div>
@@ -55,8 +57,8 @@
                     }
                 });
             },
-            resetForm(formName) {
-                this.$refs[formName].resetFields();
+            login() {
+
             }
         }
     }
@@ -68,7 +70,8 @@
 
 
     }
-    .loginFontStyle{
+
+    .loginFontStyle {
         font-family: homeFontStyle;
         font-size: 30px;
     }
