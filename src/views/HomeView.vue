@@ -180,7 +180,7 @@
                                     </el-menu-item>
                                 </el-menu-group>
                             </el-submenu>
-                            <el-menu-item index="7">
+                            <el-menu-item index="/home/photo">
                                 <div class="homeCategory" style="position: relative;right: 33px">
                                     <i class="el-icon-picture-outline"></i>
                                     <span slot="title">相簿分享</span>

@@ -35,6 +35,14 @@ const routes = [
                 meta: {
                     title: '旅討論區'
                 }
+            },
+            {
+                path: 'photo',
+                name: 'photoList',
+                component:() => import('../views/Photo/PhotoListView'),
+                meta: {
+                    title: '相簿分享 - 旅討論區'
+                }
             }
         ]
     }
