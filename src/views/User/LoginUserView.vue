@@ -1,8 +1,9 @@
 <template>
     <div>
         <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
-            <div style="margin: 130px 190px 150px;">
-                <h1 class="loginFontStyle" style="margin-top: 0;line-height: 50px">用戶登入</h1>
+            <div  style="margin: 130px 190px 150px;height: 300px">
+                <h1 class="loginFontStyle" style="margin-top: 0;line-height: 30px">用戶登入</h1>
+
                 <el-form-item label="帳號" prop="username" class="loginStyle">
 
                     <el-input style="float: left" placeholder="請輸入帳號" v-model="ruleForm.username"></el-input>

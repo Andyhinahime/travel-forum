@@ -186,6 +186,14 @@
                                     <span slot="title">相簿分享</span>
                                 </div>
                             </el-menu-item>
+                            <el-divider></el-divider>
+
+                            <el-menu-item index="/article/write">
+                                <div class="homeCategory" style="position: relative;right: 33px">
+                                    <i class="el-icon-document-add"></i>
+                                    <span slot="title" style="color: darkmagenta">撰寫文章</span>
+                                </div>
+                            </el-menu-item>
 
                         </el-menu>
 

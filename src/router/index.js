@@ -10,22 +10,22 @@ const routes = [
         path: '/',
         name: 'home',
         component: HomeView,
-        redirect:'/home',
+        redirect: '/home',
         children: [
             {
                 path: 'home',
                 name: 'maimPage',
-                component: () =>import('../views/ForumMainView'),
+                component: () => import('../views/ForumMainView'),
                 meta: {
                     title: '旅討論區'
                 }
             },
             {
-              path: 'user/register',
-              name: 'register'  ,
-                component:() =>import('../views/User/RegisterUserView'),
+                path: 'user/register',
+                name: 'register',
+                component: () => import('../views/User/RegisterUserView'),
                 meta: {
-                  title: '註冊 - 旅討論區'
+                    title: '註冊 - 旅討論區'
                 }
             },
             {
@@ -38,8 +38,8 @@ const routes = [
             },
             {
                 path: 'article/write',
-                name: 'writeArticle',
-                component:()=> import('../views/Article/WriteArticleView'),
+                name: 'article',
+                component: () => import('../views/Article/WriteArticleView'),
                 meta: {
                     title: '撰寫文章 - 旅討論區'
                 }
@@ -47,7 +47,7 @@ const routes = [
             {
                 path: 'photo',
                 name: 'photoList',
-                component:() => import('../views/Photo/PhotoListView'),
+                component: () => import('../views/Photo/PhotoListView'),
                 meta: {
                     title: '相簿分享 - 旅討論區'
                 }

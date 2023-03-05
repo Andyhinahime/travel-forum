@@ -1,44 +1,49 @@
 <template>
-    <div>
-        <h1 style="font-family: homeFontStyle;line-height: 30px;font-size: 30px" >註冊會員</h1>
-        <el-form :rules="rules" ref="registerUser" :model="registerUser" class="registerUser" label-width="130px">
-            <el-form-item class="registerUser" label="姓名" prop="name">
-                <el-input  v-model="registerUser.name"></el-input>
-            </el-form-item>
+    <div style="height: 590px;margin-bottom: 0">
+        <h1 style="font-family: homeFontStyle;line-height: 30px;font-size: 30px;margin-top: 0;margin-bottom: 15px">
+            註冊會員</h1>
+        <div style="margin-left: 240px">
+            <el-form :rules="rules" ref="registerUser" :model="registerUser" class="registerUser" label-width="120px"
+                     style="margin-bottom: 0">
+                <el-form-item class="registerUser" label="姓名" prop="name">
+                    <el-input v-model="registerUser.name"></el-input>
+                </el-form-item>
 
-            <el-form-item label="暱稱" prop="nickName">
-                <el-input v-model="registerUser.nickName"></el-input>
-            </el-form-item>
+                <el-form-item label="暱稱" prop="nickName">
+                    <el-input v-model="registerUser.nickName"></el-input>
+                </el-form-item>
 
-            <el-form-item label="年齡" prop="age">
-                <el-input v-model.number="registerUser.age"></el-input>
-            </el-form-item>
+                <el-form-item label="年齡" prop="age">
+                    <el-input v-model.number="registerUser.age"></el-input>
+                </el-form-item>
 
-            <el-form-item label="帳號" prop="userName">
-                <el-input v-model="registerUser.userName"></el-input>
-            </el-form-item>
+                <el-form-item label="帳號" prop="userName">
+                    <el-input v-model="registerUser.userName"></el-input>
+                </el-form-item>
 
-            <el-form-item label="密碼" prop="password" id="password">
-                <el-input show-password v-model="registerUser.password"></el-input>
-            </el-form-item>
+                <el-form-item label="密碼" prop="password" id="password">
+                    <el-input show-password v-model="registerUser.password"></el-input>
+                </el-form-item>
 
-            <el-form-item label="請再次輸入密碼" prop="doublePassword" id="doublePassword">
-                <el-input show-password v-model="registerUser.doublePassword"></el-input>
-            </el-form-item>
+                <el-form-item label="請再次輸入密碼" prop="doublePassword" id="doublePassword">
+                    <el-input show-password v-model="registerUser.doublePassword"></el-input>
+                </el-form-item>
 
-            <el-form-item label="手機" prop="phone" >
-                <el-input v-model="registerUser.phone"></el-input>
-            </el-form-item>
+                <el-form-item label="手機" prop="phone">
+                    <el-input v-model="registerUser.phone"></el-input>
+                </el-form-item>
 
-            <el-form-item label="電子信箱" prop="email">
-                <el-input v-model="registerUser.email"></el-input>
-            </el-form-item>
+                <el-form-item label="電子信箱" prop="email">
+                    <el-input v-model="registerUser.email"></el-input>
+                </el-form-item>
 
-            <el-form-item>
-                <el-button style="border-radius: 10px" type="primary" @click="submitForm('registerUser')">確認</el-button>
+                <el-form-item>
+                    <el-button style="border-radius: 10px" type="primary" @click="submitForm('registerUser')">確認
+                    </el-button>
 
-            </el-form-item>
-        </el-form>
+                </el-form-item>
+            </el-form>
+        </div>
     </div>
 </template>
 
@@ -114,17 +119,17 @@
                         {type: 'number', validator: checkAge, required: true, trigger: ['blur', 'change']}
                     ],
                     phone: [
-                        {type: 'string',pattern:'^09[0-9]+',len:10, message:'請輸入正確格式的手機號碼',trigger:'blur'}
+                        {type: 'string', pattern: '^09[0-9]+', len: 10, message: '請輸入正確格式的手機號碼', trigger: 'blur'}
                     ]
                 }
             }
         },
-        methods:{
+        methods: {
             submitForm(formName) {
-                this.$refs[formName].validate((valid)=>{
-                    if (valid){
+                this.$refs[formName].validate((valid) => {
+                    if (valid) {
                         alert('成功')
-                    }else{
+                    } else {
                         console.log('失敗')
                         return false;
                     }

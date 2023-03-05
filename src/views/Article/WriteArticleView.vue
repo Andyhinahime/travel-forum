@@ -1,221 +1,80 @@
 <template>
     <div class="editor">
-        <div class="menubar">
-      <span v-for="actionName in activeButtons" :key="actionName">
-        <button
-                v-if="actionName === 'bold'"
-                class="menubar__button"
-                :class="{ 'is-active': editor.isActive('bold') }"
-                @click="editor.chain().focus().toggleBold().run()"
-        >
-          <icon name="bold" />
-        </button>
-        <button
-                v-if="actionName === 'italic'"
-                class="menubar__button"
-                :class="{ 'is-active': editor.isActive('italic') }"
-                @click="editor.chain().focus().toggleItalic().run()"
-        >
-          <icon name="italic" />
-        </button>
+        <h1 style="line-height: 30px;font-size: 30px;font-family: articleFontStyle;margin-top: 0;margin-bottom: 0">撰寫文章</h1>
+        <el-divider></el-divider>
+        <el-form ref="newArticle" :rules="rules" :model="newArticle" label-width="120px">
+            <el-form-item style="width: 350px" label="標題" prop="articleTitle">
+                <el-input v-model="newArticle.articleTitle"></el-input>
+            </el-form-item>
 
-        <button
-                v-if="actionName === 'strike'"
-                class="menubar__button"
-                :class="{ 'is-active': editor.isActive('strike') }"
-                @click="editor.chain().focus().toggleStrike().run()"
-        >
-          <icon name="strike" />
-        </button>
+            <el-form-item style="width: 350px" label="文章分類" prop="articleCategory">
+                <el-select no-data-text="目前" v-model="newArticle.articleCategory" placeholder="請選擇主題分類">
+                    <el-option label="私房景點" value="1"></el-option>
+                    <el-option label="陸上活動" value="2"></el-option>
+                    <el-option label="水上活動" value="3"></el-option>
+                    <el-option label="高空活動" value="4"></el-option>
+                    <el-option label="國內攻略" value="5"></el-option>
+                    <el-option label="國外攻略" value="6"></el-option>
+                </el-select>
+            </el-form-item>
 
-        <button
-                v-if="actionName === 'underline'"
-                class="menubar__button"
-                :class="{ 'is-active': editor.isActive('underline') }"
-                @click="editor.chain().focus().toggleUnderline().run()"
-        >
-          <icon name="underline" />
-        </button>
-
-        <button
-                v-if="actionName === 'code'"
-                class="menubar__button"
-                :class="{ 'is-active': editor.isActive('code') }"
-                @click="editor.chain().focus().toggleCode().run()"
-        >
-          <icon name="code" />
-        </button>
-
-        <button
-                v-if="actionName === 'h1'"
-                class="menubar__button"
-                :class="{ 'is-active': editor.isActive('heading', { level: 1 }) }"
-                @click="editor.chain().focus().toggleHeading({ level: 1 }).run()"
-        >
-          H1
-        </button>
-
-        <button
-                v-if="actionName === 'h2'"
-                class="menubar__button"
-                :class="{ 'is-active': editor.isActive('heading', { level: 2 }) }"
-                @click="editor.chain().focus().toggleHeading({ level: 2 }).run()"
-        >
-          H2
-        </button>
-
-        <button
-                v-if="actionName === 'h3'"
-                class="menubar__button"
-                :class="{ 'is-active': editor.isActive('heading', { level: 3 }) }"
-                @click="editor.chain().focus().toggleHeading({ level: 3 }).run()"
-        >
-          H3
-        </button>
-
-        <button
-                v-if="actionName === 'bulletList'"
-                class="menubar__button"
-                :class="{ 'is-active': editor.isActive('bulletList') }"
-                @click="editor.chain().focus().toggleBulletList().run()"
-        >
-          <icon name="ul" />
-        </button>
-
-        <button
-                v-if="actionName === 'orderedList'"
-                class="menubar__button"
-                :class="{ 'is-active': editor.isActive('orderedList') }"
-                @click="editor.chain().focus().toggleOrderedList().run()"
-        >
-          <icon name="ol" />
-        </button>
-
-        <button
-                v-if="actionName === 'blockquote'"
-                class="menubar__button"
-                :class="{ 'is-active': editor.isActive('blockquote') }"
-                @click="editor.chain().focus().toggleBlockquote().run()"
-        >
-          <icon name="quote" />
-        </button>
-
-        <button
-                v-if="actionName === 'codeBlock'"
-                class="menubar__button"
-                :class="{ 'is-active': editor.isActive('codeBlock') }"
-                @click="editor.chain().focus().toggleCodeBlock().run()"
-        >
-          <icon name="code" />
-        </button>
-
-        <button
-                v-if="actionName === 'horizontalRule'"
-                class="menubar__button"
-                @click="editor.chain().focus().setHorizontalRule().run()"
-        >
-          <icon name="hr" />
-        </button>
-
-        <button
-                v-if="actionName === 'undo'"
-                class="menubar__button"
-                @click="editor.chain().focus().undo().run()"
-        >
-          <icon name="undo" />
-        </button>
-
-        <button
-                v-if="actionName === 'redo'"
-                class="menubar__button"
-                @click="editor.chain().focus().redo().run()"
-        >
-          <icon name="redo" />
-        </button>
-      </span>
-        </div>
-
-        <editor-content class="editor__content" :editor="editor" />
+            <el-form-item label="內容" prop="articleMain">
+                <el-input
+                        type="textarea"
+                        :autosize="{ minRows: 14, maxRows: 50}"
+                        placeholder="請輸入內容"
+                        v-model="newArticle.articleMain">
+                </el-input>
+            </el-form-item>
+            <el-form-item>
+                <el-button type="primary" @click="submitForm('form')">發表文章</el-button>
+                <el-button @click="cancel">取消發表</el-button>
+            </el-form-item>
+        </el-form>
     </div>
 </template>
 
 <script>
-    import Icon from './Icon';
-    import { Editor, EditorContent } from '@tiptap/vue-3';
-    import StarterKit from '@tiptap/starter-kit';
-    import Underline from '@tiptap/extension-underline';
-
     export default {
-        name: 'Editor',
-        components: {
-            EditorContent,
-            Icon,
-        },
-        props: {
-            initialContent: {
-                type: String,
-                required: true,
-                default: '<em>editable text</em>',
-            },
-            activeButtons: {
-                type: Array,
-                validator: function (list) {
-                    for (let el of list) {
-                        // The value must match one of these strings
-                        if (
-                            [
-                                'bold',
-                                'italic',
-                                'strike',
-                                'underline',
-                                'code',
-                                'h1',
-                                'h2',
-                                'h3',
-                                'bulletList',
-                                'orderedList',
-                                'blockquote',
-                                'codeBlock',
-                                'horizontalRule',
-                                'undo',
-                                'redo',
-                            ].indexOf(el) === -1
-                        ) {
-                            return -1;
-                        }
-                    }
-                    return 1;
-                },
-                default: () => ['bold', 'italic'],
-            },
-        },
-        emits: ['update'],
         data() {
             return {
-                html: '',
-                json: '',
-                editor: null,
-            };
-        },
-        created() {
-            this.editor = new Editor({
-                content: this.initialContent,
-                extensions: [StarterKit, Underline],
-            });
+                newArticle: {
+                    articleTitle: '',
+                    articleCategory: '',
+                    articleMain: ''
 
-            this.html = this.editor.getHTML();
-            this.json = this.editor.getJSON();
-
-            this.editor.on('update', () => {
-                this.html = this.editor.getHTML();
-                this.json = this.editor.getJSON();
-                this.$emit('update', this.html);
-            });
+                },
+                rules: {
+                    articleTitle: [
+                        {required: true, message: '請輸入文章標題', trigger: 'blur'},
+                        {min: 4, max: 15, message: '標題長度為4-15個字', trigger: 'blur'}
+                    ],
+                    articleCategory: [
+                        {required: true, message: '請選擇主題分類', trigger: 'change,blur'}
+                    ],
+                    articleMain: [
+                        {required: true, message: '請輸入文章內容', trigger: 'blur'},
+                        {min: 30, message: '文章內容最少30個字', trigger: 'blur'}
+                    ]
+                }
+            }
         },
-        beforeUnmount() {
-            this.editor.destroy();
-        },
-    };
+        methods: {
+            submitForm(formName) {
+                this.$refs[formName].validate((valid) => {
+                    if (valid) {
+                        alert('發表文章完成!');
+                    } else {
+                        console.log('error submit!!');
+                        return false;
+                    }
+                });
+            },
+            cancel() {
+                location.href = '/home'
+            }
+        }
+    }
 </script>
 
 <style lang="css" scoped></style>

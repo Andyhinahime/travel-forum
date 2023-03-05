@@ -15,15 +15,14 @@
             </el-col>
         </el-row>
         <!--熱門相簿跑馬燈 結束-->
-
-            <router-link to="/article/write">
-                撰寫文章
-            </router-link>
+        <h1 style="line-height: 30px;font-size: 30px;font-family: articleFontStyle;color: cornflowerblue">精選文章</h1>
+        <el-divider></el-divider>
 
 
         <!-- 最新文章及熱門文章開始 -->
         <el-row :gutter="10">
             <el-col :span="10">
+
                 <el-card class="box-card" style="height: 480px">
                     <div slot="header" style="line-height: 20px">
                         <span class="articleTitleFont">最新文章</span>
