@@ -1,5 +1,7 @@
 <template>
+
     <div>
+        <!--熱門相簿跑馬燈 開始-->
         <el-row :gutter="10" style="display: flex;justify-content: center;align-items: center">
             <el-col :span="20" style="height: 480px">
                 <h1 style="line-height: 30px;font-family: homeFontStyle;font-size: 30px">熱門相簿</h1>
@@ -12,6 +14,12 @@
                 </el-carousel>
             </el-col>
         </el-row>
+        <!--熱門相簿跑馬燈 結束-->
+
+            <router-link to="/article/write">
+                撰寫文章
+            </router-link>
+
 
         <!-- 最新文章及熱門文章開始 -->
         <el-row :gutter="10">

@@ -7,17 +7,17 @@ Vue.use(VueRouter)
 
 const routes = [
     {
-        path: '/home',
+        path: '/',
         name: 'home',
         component: HomeView,
-        redirect:'/home/main',
+        redirect:'/home',
         children: [
             {
-                path: 'user/login',
-                name: 'login',
-                component: () => import('../views/User/LoginUserView'),
+                path: 'home',
+                name: 'maimPage',
+                component: () =>import('../views/ForumMainView'),
                 meta: {
-                    title: '登入 - 旅討論區'
+                    title: '旅討論區'
                 }
             },
             {
@@ -29,11 +29,19 @@ const routes = [
                 }
             },
             {
-                path: 'main',
-                name: 'maimPage',
-                component: () =>import('../views/ForumMainView'),
+                path: 'user/login',
+                name: 'login',
+                component: () => import('../views/User/LoginUserView'),
                 meta: {
-                    title: '旅討論區'
+                    title: '登入 - 旅討論區'
+                }
+            },
+            {
+                path: 'article/write',
+                name: 'writeArticle',
+                component:()=> import('../views/Article/WriteArticleView'),
+                meta: {
+                    title: '撰寫文章 - 旅討論區'
                 }
             },
             {

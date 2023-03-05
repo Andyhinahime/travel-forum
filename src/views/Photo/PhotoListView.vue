@@ -1,6 +1,11 @@
 <template>
     <div>
-        <h1 style="line-height: 30px;font-family: articleFontStyle;font-size: 30px">相簿分享</h1>
+        <div>
+            <h1 style="line-height: 30px;font-family: articleFontStyle;font-size: 30px">相簿分享</h1>
+
+        </div>
+
+
         <el-row gutter="5">
             <el-col span="8" v-for="p in testPhoto" :key="p" >
                 <el-card style="margin-bottom: 10px">

@@ -1,9 +1,9 @@
 <template>
     <div class="webLayout" style="width: 1300px;margin: 0 auto">
         <div style="width: 100%;height: 25px">
-            <router-link style="font-family: homeFontStyle;margin-left: 1200px" to="/home/user/register">註冊</router-link>
+            <router-link style="font-family: homeFontStyle;margin-left: 1200px" to="/user/register">註冊</router-link>
             <el-divider direction="vertical"></el-divider>
-            <router-link style="font-family: homeFontStyle;margin-left: 0px" to="/home/user/login">登入</router-link>
+            <router-link style="font-family: homeFontStyle;margin-left: 0px" to="/user/login">登入</router-link>
         </div>
 
         <el-container>
@@ -28,7 +28,7 @@
                                 class="el-menu-vertical-demo"
                                 @open="handleOpen"
                                 @close="handleClose">
-                            <el-menu-item index="/home/main">
+                            <el-menu-item index="/home">
                                 <div class="homeCategory" style="position: relative;right: 48px">
                                     <i class="el-icon-s-home"></i>
                                     <span slot="title">首頁</span>
@@ -180,7 +180,7 @@
                                     </el-menu-item>
                                 </el-menu-group>
                             </el-submenu>
-                            <el-menu-item index="/home/photo">
+                            <el-menu-item index="/photo">
                                 <div class="homeCategory" style="position: relative;right: 33px">
                                     <i class="el-icon-picture-outline"></i>
                                     <span slot="title">相簿分享</span>

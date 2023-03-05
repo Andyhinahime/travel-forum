@@ -18,7 +18,7 @@
                 <span style="
                 position: relative;right: 180px;bottom: 122px;
                 font-family: homeFontStyle;font-size: 18px">沒有帳號?
-                    <router-link style="font-family: homeFontStyle;font-size: 22px" to="/home/user/register">註冊</router-link>
+                    <router-link style="font-family: homeFontStyle;font-size: 22px" to="/user/register">註冊</router-link>
                 </span>
             </div>
         </el-form>
